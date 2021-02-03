@@ -8,7 +8,7 @@ For example add this to any wiki page or markdown file in github
 
 ```mermaid
 sequenceDiagram
-  A([AAAA])->> B: Query
+  AAAAA->> B: Query
   B->> C: Forward query
   Note right of C: Thinking...
   C->> B: Response
@@ -24,6 +24,27 @@ sequenceDiagram
   Note right of C: Thinking of B...
   C->> B: Response of B
   B->> A: Forward response of B
+```
+
+```mermaid
+graph LR
+
+subgraph supership
+  PS([PubSub<br/>momproxyd.fetcher]) --> fetcher
+end
+
+subgraph Momentum
+  Global-HTTPLB --> nginx
+
+  subgraph axia-prod
+  	nginx --> Internal-HTTPLB
+	end
+end
+
+fetcher --> IAS
+fetcher --> ODC
+fetcher --> Global-HTTPLB
+
 ```
 
 This will generate a nice diagram if loaded from github/Azure Devops. The extension will just replace the code block with the generated [mermaid](http://knsv.github.io/mermaid/index.html) diagram.
