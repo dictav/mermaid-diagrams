@@ -8,7 +8,7 @@ For example add this to any wiki page or markdown file in github
 
 ```mermaid
 sequenceDiagram
-  A->> B: Query
+  A([AAAA])->> B: Query
   B->> C: Forward query
   Note right of C: Thinking...
   C->> B: Response
